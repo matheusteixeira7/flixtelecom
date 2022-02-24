@@ -22,6 +22,12 @@ export default function AuthFlix() {
         }
     }
 
+    async function signInWithGoogle() {
+        const { user, session, error } = await supabase.auth.signIn({
+            provider: 'google'
+        })
+    }
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -47,6 +53,10 @@ export default function AuthFlix() {
                     disabled={loading}
                 >
                     <span>{loading ? 'Loading' : 'Fazer login'}</span>
+                </button>
+
+                <button onClick={() => signInWithGoogle()}>
+                    <span>google oauth</span>
                 </button>
             </body>
         </div>
