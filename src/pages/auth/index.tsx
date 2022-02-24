@@ -28,6 +28,10 @@ export default function AuthFlix() {
         })
     }
 
+    async function signout() {
+        const { error } = await supabase.auth.signOut()
+    }
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -57,6 +61,9 @@ export default function AuthFlix() {
 
                 <button onClick={() => signInWithGoogle()}>
                     <span>google oauth</span>
+                </button>
+                <button onClick={() => signout()}>
+                    <span>logout google oauth</span>
                 </button>
             </body>
         </div>
